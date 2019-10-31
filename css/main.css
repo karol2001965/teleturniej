@@ -15,12 +15,8 @@ root {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #FDFC47;
+  background-image: url("/tla/photo-1534796636912-3b95b3ab5986.jpeg");
   /* fallback for old browsers */
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#FDFC47), to(#24FE41));
-  background: linear-gradient(to right, #FDFC47, #24FE41);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .left_side {
@@ -53,9 +49,10 @@ root {
 }
 
 .left_side .left_side_bottom_all .left_side_bottom_question {
-  height: 30%;
-  width: 100%;
-  background-color: red;
+  height: 100%;
+  width: 97%;
+  border: 2px solid gold;
+  background-color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,38 +103,78 @@ root {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px 5px 10px 5px;
-}
-
-.left_side .left_side_bottom .A {
-  background-color: #76A665;
-}
-
-.left_side .left_side_bottom .B {
-  background-color: #214154;
-}
-
-.left_side .left_side_bottom .C {
-  background-color: #FFDD5C;
-}
-
-.left_side .left_side_bottom .D {
-  background-color: orangered;
+  border: 2px solid gold;
+  background-color: black;
 }
 
 .left_side .left_side_bottom .answers {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: gold;
+}
+
+.left_side .left_side_bottom_question_container {
+  width: 100%;
+  height: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.answer_append {
+  display: none;
+}
+
+@-webkit-keyframes pulseAnim {
+  0% {
+    background: darkgreen;
+  }
+  100% {
+    background: white;
+  }
+}
+
+@keyframes pulseAnim {
+  0% {
+    background: darkgreen;
+  }
+  100% {
+    background: white;
+  }
+}
+
+@-webkit-keyframes pulseAnimfail {
+  0% {
+    background: red;
+  }
+  100% {
+    background: white;
+  }
+}
+
+@keyframes pulseAnimfail {
+  0% {
+    background: red;
+  }
+  100% {
+    background: white;
+  }
 }
 
 .right_side {
   width: 30vw;
-  height: 100vh;
+  height: 79vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -148,7 +185,7 @@ root {
 }
 
 .right_append {
-  width: 90%;
+  width: 100%;
   border-radius: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -160,12 +197,33 @@ root {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px 5px 10px 5px;
-  background-color: red;
-  color: white;
+  border: 2px solid blue;
+  background-color: black;
+  color: gold;
 }
 
 .right_append_question {
   font-size: 1.5rem;
+  color: gold;
+  display: none;
+}
+
+.right_side_container {
+  height: 100vh;
+  width: 30vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /*# sourceMappingURL=main.css.map */
