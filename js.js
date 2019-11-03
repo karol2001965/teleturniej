@@ -6,6 +6,7 @@ $(function(){
     $right_append_question=$(".right_append_question")
     $answer_append=$(".answer_append")
     $left_side_bottom=$(".left_side_bottom")
+    $kola=$(".kola")
 
     $A=$(".A")
     $B=$(".B")
@@ -29,18 +30,24 @@ console.log($left_side_bottom.children().eq(-2).children().eq(0).children().eq(0
             ["pytanie2","5","6","7","8","B"],
             ["pytanie3","5","6","7","8","C"],
             ["pytanie4","5","6","7","8","D"],
-            ["pytanie5","5","6","7","8","A"],
+            ["pytanie5","5","6","7","tak","D"],
             ["pytanie6","5","6","7","8","D"],
             ["pytanie7","5","6","7","8","D"],
-            ["pytanie8","5","6","7","8","D"],
-            ["pytanie9","5","6","7","8","D"],
-            ["pytanie10","5","6","7","8","D"],
+            ["pytanie7","5","6","7","8","D"],
+            ["pytanie7","5","6","7","8","D"],
+            ["pytanie7","5","6","7","8","D"],
+            ["pytanie7","5","6","7","8","D"],
+            ["pytanie7","5","6","7","8","D"],
+            ["pytanie7","5","6","7","8","D"],
+
 
 
 
 
 
         ]
+
+    console.log(pytania_i_odpowiedzi[9][0]);
     for (var i=progi.length-1;i>=0;i--){
         var $newdiv1 = $( "<div class='right_append'></div>" ).text(progi[i]);
 
@@ -68,6 +75,7 @@ console.log($left_side_bottom.children().eq(-2).children().eq(0).children().eq(0
             //$answer.css({ backgroundColor: "black" , cursor:"pointer" })
             answer_count++
             answer_count_answer++
+
         }
         if(answer_count_answer===1){
         $(".right_append_question").css({display:"inline"})
@@ -76,10 +84,11 @@ console.log($left_side_bottom.children().eq(-2).children().eq(0).children().eq(0
        $left_side_bottom.children().eq(answer_count).children().eq(0).children().eq(0).css({display:"inline"})
         console.log(answer_count);
         }
+
     });
 
 
-    var czas=5000;
+    var czas=1000;//5000
 
     $answer.click(function() {
         $(this).css({ backgroundColor: "orange" , cursor:"pointer" })
@@ -88,7 +97,7 @@ console.log($left_side_bottom.children().eq(-2).children().eq(0).children().eq(0
         //     $(this).css({ backgroundColor: "orange" , transition :"0.5s" })
         //     $(this).find("p").css({color:"black" , transition: "0.5s"})
         // });
-answer_count=-1
+answer_count=-2
 answer_count_answer=0
         console.log()
 
@@ -96,21 +105,37 @@ answer_count_answer=0
 
 
     if(pytania_i_odpowiedzi[counter][5]===$(this).attr("data-correct")) {
-
+console.log(counter);
         // setTimeout(function()=>{
         //
         // }, 1000);
         //css({ backgroundColor: "green"}
+console.log($(this));
         const explode = () => { return $(this).css(
 
 
-            { animation: "pulseAnim 0.5s 0s 10 alternate ease-in-out"}
-
+            // { animation: "pulseAnim 0.5s 0s 1 alternate ease-in-out"}
+            {backgroundColor:"darkgreen",transition:"2s"}
 
         );
         }
         setTimeout(explode, czas);
-        setTimeout(function(){
+        const next = () => {
+            console.log($(this));
+            $(this).css(
+
+
+                // { animation: "pulseAnim 0.5s 0s 1 alternate ease-in-out"}
+                {backgroundColor:"black"}
+
+            );
+            $(this).find("p").css(
+
+
+                // { animation: "pulseAnim 0.5s 0s 1 alternate ease-in-out"}
+                {color:"gold"}
+
+            );
 
             counter++
             if (counter>=1){
@@ -136,7 +161,8 @@ answer_count_answer=0
             $(".right_append_question").css({display:"none"});
             $answer_append.css({display:"none"});
 
-            $(".right_append").eq(progi.length-counter).css({backgroundColor: "blue"})}, czas+5000);
+            $(".right_append").eq(progi.length-counter).css({backgroundColor: "blue"})}
+        setTimeout(next, czas+1000);
 
 
         // $(this).css({ backgroundColor: "green"})
@@ -145,18 +171,61 @@ answer_count_answer=0
         const fail = () => { return $(this).css(
 
 
-            { animation: "pulseAnimfail 0.5s 0s infinite alternate ease-in-out"}
+            { animation: "pulseAnimfail 0.5s 0s 10 alternate ease-in-out"}
 
 
         );
         }
         setTimeout(fail, czas);
+        // const fail_result = () => { return $(".left_side_bottom_none").css({ display:"none"})
+        //     var $newdiv3 = $( "<p class='right_append_win'></p>" ).text(progi[counter]);
+        //     $(".left_side_bottom_all").append( $newdiv3 );``
+        //
+        // }
+        // setTimeout(fail_result, czas+2000);
+        setTimeout(function(){
+             $(".left_side_bottom_none").css({ display:"none"})
+                var $newdiv3 = $( "<p class='right_append_win'></p>" ).text("WYGRANA:"+progi[counter]);
+                $(".left_side_bottom_all").append( $newdiv3 );
+            $(".left_side_bottom_all").css({display:"flex",justifyContent:"center",alignItems:"center"})
+
+        }, czas+2000);
 
 
 
 
     }
 });
+
+
+    $kola.find("div").find("div").mouseenter(function () {
+        $(this).find("i").css({color:"black",cursor:"pointer"});
+        $(this).find("p").css({color:"black",cursor:"pointer"});
+        $(this).css({backgroundColor:"#024873",cursor:"pointer"});
+    })
+    $kola.find("div").find("div").mouseleave(function () {
+        $(this).find("i").css({color:"white",cursor:"pointer"});
+        $(this).find("p").css({color:"white",cursor:"pointer"});
+        $(this).css({backgroundColor:"black",cursor:"pointer"});
+    })
+    $kola.find("div").find("div").click(function () {
+        $(this).find("i").css({color:"black",cursor:"pointer"});
+        $(this).find("p").css({color:"black",cursor:"pointer"});
+        $(this).css({backgroundColor:"orange",cursor:"pointer"});
+    })
+    $kola.find(".fifty").click(function () {
+        $(this).find("p").css({color:"black",cursor:"pointer"});
+        $(this).css({backgroundColor:"orange",cursor:"pointer"});
+
+        $kola.find(".fifty").mouseleave(function () {
+            $(this).find("p").css({color:"white",cursor:"pointer"});
+            $(this).css({backgroundColor:"black",cursor:"pointer"});
+
+        })
+
+
+
+    })
 
     //PROGI
 
@@ -176,6 +245,114 @@ answer_count_answer=0
         $(this).css({ backgroundColor: "black" , transition :"0.5s" })
         $(this).find("p").css({color:"gold" , transition: "0.5s"})
     });
+
+
+// array = [2, 9]
+$(".fifty").click(function () {
+    var fifty_array=[0,1,2,3]
+    if(pytania_i_odpowiedzi[counter][5]==="A"){
+        console.log("A");
+        let index = fifty_array.indexOf(0);
+        if (index > -1) {
+            fifty_array.splice(index, 1);
+        }
+        console.log(fifty_array);
+        let fifty_random=Math.floor((Math.random() * 3));
+
+        let index_1 = fifty_array.indexOf(fifty_array[fifty_random]);
+        if (index_1 > -1) {
+            fifty_array.splice(index_1, 1);
+            }
+
+        setTimeout(function(){
+
+          $(".times_wasted").css({display:"inline-block"})
+$answer_append.eq(fifty_array[0]).css({display:"none"})
+$answer_append.eq(fifty_array[1]).css({display:"none"})
+
+
+        }, 0);
+
+
+    }
+    if(pytania_i_odpowiedzi[counter][5]==="B"){
+        console.log("B");
+        let index = fifty_array.indexOf(1);
+        if (index > -1) {
+            fifty_array.splice(index, 1);
+        }
+        console.log(fifty_array);
+
+
+        let fifty_random=Math.floor((Math.random() * 3));
+
+        let index_1 = fifty_array.indexOf(fifty_array[fifty_random]);
+        if (index_1 > -1) {
+            fifty_array.splice(index_1, 1);
+        }
+        setTimeout(function(){
+
+            $(".times_wasted").css({display:"inline-block"})
+            $answer_append.eq(fifty_array[0]).css({display:"none"})
+            $answer_append.eq(fifty_array[1]).css({display:"none"})
+
+
+        }, 5000);
+
+
+    }
+    if(pytania_i_odpowiedzi[counter][5]==="C"){
+        console.log("C");
+        let index = fifty_array.indexOf(2);
+        if (index > -1) {
+            fifty_array.splice(index, 1);
+        }
+        console.log(fifty_array);
+        let fifty_random=Math.floor((Math.random() * 3));
+
+        let index_1 = fifty_array.indexOf(fifty_array[fifty_random]);
+        if (index_1 > -1) {
+            fifty_array.splice(index_1, 1);
+        }
+        setTimeout(function(){
+
+            $(".times_wasted").css({display:"inline-block"})
+            $answer_append.eq(fifty_array[0]).css({display:"none"})
+            $answer_append.eq(fifty_array[1]).css({display:"none"})
+
+
+        }, 5000);
+    }
+    if(pytania_i_odpowiedzi[counter][5]==="D"){
+        console.log("D");
+        let index = fifty_array.indexOf(3);
+        if (index > -1) {
+            fifty_array.splice(index, 1);
+        }
+        console.log(fifty_array);
+        let fifty_random=Math.floor((Math.random() * 3));
+
+        let index_1 = fifty_array.indexOf(fifty_array[fifty_random]);
+        if (index_1 > -1) {
+            fifty_array.splice(index_1, 1);
+        }
+        setTimeout(function(){
+
+            $(".times_wasted").css({display:"inline-block"})
+            $answer_append.eq(fifty_array[0]).css({display:"none"})
+            $answer_append.eq(fifty_array[1]).css({display:"none"})
+
+
+        }, 5000);
+    }
+
+
+})
+    $(".phone").click(function () {
+        $(".phone_wasted").css({display:"inline-block"})
+    })
+
+
 
 
 
